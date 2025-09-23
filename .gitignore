@@ -1,0 +1,16 @@
+# TLA+ Generated Files
+states/
+*.st
+*.fp
+*.dot
+*.log
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+
+# IDE
+.vscode/
+.DS_Store
