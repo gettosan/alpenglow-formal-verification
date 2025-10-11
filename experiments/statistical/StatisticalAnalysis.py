@@ -26,7 +26,11 @@ class AlpenglowStatisticalAnalysis:
         self.cpu_workers = max(1, (os.cpu_count() or 4))
         
     def generate_large_scale_configs(self):
-        """Generate configurations for realistic blockchain network sizes (10-1000 nodes)"""
+        """Generate configurations for realistic blockchain network sizes (10-1000 nodes)
+        
+        Returns:
+            List[Dict]: List of configuration dictionaries for different network sizes
+        """
         configs = []
         
         # Realistic network sizes for production blockchain systems (including very large networks)
@@ -35,6 +39,7 @@ class AlpenglowStatisticalAnalysis:
         for nodes in network_sizes:
             # Test key Byzantine fault scenarios (< 20% for BFT safety)
             # Calculate Byzantine faults as percentage of nodes
+            # Alpenglow tolerates up to 19% Byzantine nodes
             max_byzantine = (nodes * 19) // 100  # 19% max
             
             # Test scenarios: no faults, low faults, near-max faults

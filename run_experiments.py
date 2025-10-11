@@ -35,7 +35,11 @@ class ExperimentRunner:
         print()
     
     def cleanup_tlc_directories(self):
-        """Clean up TLC state directories to avoid conflicts"""
+        """Clean up TLC state directories to avoid conflicts
+        
+        Removes TLC state directories that may cause conflicts
+        in subsequent verification runs.
+        """
         print("🧹 Cleaning up TLC state directories...")
         try:
             # Find and remove TLC state directories
@@ -54,9 +58,19 @@ class ExperimentRunner:
                     
         except Exception as e:
             print(f"  Warning: Cleanup failed: {e}")
+            # Continue execution even if cleanup fails
         
     def run_command(self, cmd, description, timeout=300):
-        """Run a command and capture results with Mac optimizations"""
+        """Run a command and capture results with Mac optimizations
+        
+        Args:
+            cmd: Command to run as list of strings
+            description: Human-readable description of the command
+            timeout: Maximum execution time in seconds (default: 300)
+            
+        Returns:
+            Tuple[bool, str]: (success, output or error message)
+        """
         print(f"🔄 {description}...")
         start_time = time.time()
         

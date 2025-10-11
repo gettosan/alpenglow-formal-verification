@@ -22,7 +22,16 @@ class AlpenglowBenchmark:
         self.tla_tools = self.base_dir / "tla2tools.jar"
         
     def run_tlc_benchmark(self, spec_file, config_file, timeout=300):
-        """Run TLC model checker and collect performance metrics"""
+        """Run TLC model checker and collect performance metrics
+        
+        Args:
+            spec_file: Path to TLA+ specification file
+            config_file: Path to TLC configuration file
+            timeout: Maximum execution time in seconds (default: 300)
+            
+        Returns:
+            Dict: Performance metrics including runtime and state count
+        """
         start_time = time.time()
         
         cmd = [

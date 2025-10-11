@@ -26,10 +26,14 @@ class TheoremTestResult:
         self.execution_time = 0.0
 
 def test_java_availability() -> Tuple[bool, str]:
-    """Test if Java is available and properly configured"""
+    """Test if Java is available and properly configured
+    
+    Returns:
+        Tuple[bool, str]: (success, version_info or error message)
+    """
     print("Testing Java availability...")
     try:
-        result = subprocess.run(["java", "-version"], capture_output=True, text=True)
+        result = subprocess.run(["java", "-version"], capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
             version_info = result.stderr.split('\n')[0] if result.stderr else "Java available"
             print(f"PASS: Java is available - {version_info}")
@@ -40,6 +44,9 @@ def test_java_availability() -> Tuple[bool, str]:
     except FileNotFoundError:
         print("FAIL: Java not found in PATH")
         return False, "Java not found"
+    except subprocess.TimeoutExpired:
+        print("FAIL: Java version check timed out")
+        return False, "Java version check timeout"
 
 def test_tla_tools() -> Tuple[bool, str]:
     """Test TLA+ tools availability and accessibility"""
@@ -60,7 +67,11 @@ def test_tla_tools() -> Tuple[bool, str]:
         return False, str(e)
 
 def verify_safety_theorems() -> List[TheoremTestResult]:
-    """Verify all safety theorems from SafetyProofs.tla"""
+    """Verify all safety theorems from SafetyProofs.tla
+    
+    Returns:
+        List[TheoremTestResult]: List of theorem verification results
+    """
     print("\n=== SAFETY THEOREM VERIFICATION ===")
     
     safety_theorems = [
