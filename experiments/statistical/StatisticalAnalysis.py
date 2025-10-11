@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Statistical Model Checking for Alpenglow Consensus
-Runs Monte Carlo simulations for realistic network sizes (10-1000+ nodes)
+
+Runs Monte Carlo simulations for realistic network sizes (10-1000+ nodes).
+Provides probabilistic verification coverage for large-scale networks.
 """
 
 import os
@@ -14,6 +16,7 @@ from pathlib import Path
 import random
 
 class AlpenglowStatisticalAnalysis:
+    """Statistical model checking framework for large-scale verification"""
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent.parent
         self.results = []

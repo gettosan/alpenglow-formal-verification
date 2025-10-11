@@ -1,6 +1,7 @@
 #!/bin/bash
 # Alpenglow Formal Verification - Java Setup Script
-# This script ensures OpenJDK 17 is properly configured for TLA+ tools
+# This script ensures OpenJDK 17 is properly configured for TLA+ tools.
+# Provides automated environment configuration for macOS systems.
 
 echo "🔧 Setting up Java environment for Alpenglow Formal Verification..."
 
@@ -80,3 +81,4 @@ echo "💡 If you're still having issues, try:"
 echo "   1. Restart your terminal"
 echo "   2. Run: source $PROFILE"
 echo "   3. Or run this script again"
+

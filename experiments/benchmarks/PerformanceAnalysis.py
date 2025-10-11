@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Alpenglow Consensus Performance Analysis
-Benchmarking TLA+ model checking performance and scalability analysis
+
+Benchmarking TLA+ model checking performance and scalability analysis.
+Provides detailed metrics and optimization insights.
 """
 
 import subprocess
@@ -13,6 +15,7 @@ from pathlib import Path
 import re
 
 class AlpenglowBenchmark:
+    """Performance benchmarking and analysis tool"""
     def __init__(self):
         self.results = []
         self.base_dir = Path(__file__).parent.parent.parent
@@ -290,3 +293,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

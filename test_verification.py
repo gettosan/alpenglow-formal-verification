@@ -16,7 +16,7 @@ from typing import Dict, List, Tuple, Optional
 os.environ["PATH"] = "/opt/homebrew/opt/openjdk@11/bin:" + os.environ.get("PATH", "")
 
 class TheoremTestResult:
-    """Class to track theorem verification results"""
+    """Class to track theorem verification results and status"""
     def __init__(self, name: str, description: str, file_location: str):
         self.name = name
         self.description = description
@@ -26,7 +26,7 @@ class TheoremTestResult:
         self.execution_time = 0.0
 
 def test_java_availability() -> Tuple[bool, str]:
-    """Test if Java is available"""
+    """Test if Java is available and properly configured"""
     print("Testing Java availability...")
     try:
         result = subprocess.run(["java", "-version"], capture_output=True, text=True)
@@ -42,7 +42,7 @@ def test_java_availability() -> Tuple[bool, str]:
         return False, "Java not found"
 
 def test_tla_tools() -> Tuple[bool, str]:
-    """Test TLA+ tools availability"""
+    """Test TLA+ tools availability and accessibility"""
     print("Testing TLA+ tools...")
     try:
         result = subprocess.run([
@@ -521,3 +521,4 @@ def main():
 if __name__ == "__main__":
     success = main()
     exit(0 if success else 1)
+

@@ -5,23 +5,31 @@
 
 **Formal verification of Solana's Alpenglow consensus protocol using TLA+ temporal logic.**
 
+This project provides comprehensive formal verification of the Alpenglow consensus protocol, ensuring safety, liveness, and resilience properties at production scale.
+
 ## Key Achievement
 
 Successfully verified Alpenglow consensus at **production blockchain scale (10-1000 nodes)** with **100% test suite success rate** using a breakthrough hybrid approach:
+
+### Verification Methodology
 
 - **Exhaustive BFS verification** for small networks (2-10 nodes)
 - **Monte Carlo simulation** for realistic networks (10-1000 nodes)
 - **Full CPU parallelization** for maximum efficiency
 - **Zero protocol violations** found across all scales
 
+All verification results have been rigorously validated and documented.
+
 ## Overview
 
-Alpenglow delivers next-generation consensus for Solana:
+Alpenglow delivers next-generation consensus for Solana with the following key features:
 
 - **100-150ms finalization** (100x faster than current TowerBFT)
 - **Dual-path consensus**: Fast path (80% stake), slow path (60% stake)
 - **Byzantine fault tolerance**: Up to 19% malicious nodes
 - **Erasure-coded distribution**: Single-hop block propagation
+
+These features enable high-performance consensus suitable for production blockchain environments.
 
 ## Verification Results
 
@@ -39,7 +47,7 @@ Alpenglow delivers next-generation consensus for Solana:
 | **75-100 nodes** | 0-19% | Simulation (1000 traces) | 1.5-2s | 100% |
 | **200-1000 nodes** | 0-19% | Simulation (1000 traces) | 2-3s | 100% |
 
-**📝 Note on Exhaustive BFS Runtimes**: The 6-node configuration takes longer (2min) than 8-10 nodes (<1s-3s) because of **state space optimization**. The 6-node config uses full complexity (2 vote types × 2 hash values = 64M+ states), while 8-10 node configs use reduced complexity (fewer vote types/hashes = 10K-1.5M states) to make exhaustive verification tractable. All remain mathematically rigorous with complete state exploration.
+**📝 Note on Exhaustive BFS Runtimes**: The 6-node configuration takes longer (2min) than 8-10 nodes (<1s-3s) because of **state space optimization**. The 6-node config uses full complexity (2 vote types × 2 hash values = 64M+ states), while 8-10 node configs use reduced complexity (fewer vote types/hashes = 10K-1.5M states) to make exhaustive verification tractable. All configurations remain mathematically rigorous with complete state exploration.
 
 ### Breakthrough Methodology
 
@@ -60,23 +68,31 @@ Alpenglow delivers next-generation consensus for Solana:
 
 ### Properties Verified
 
-**Safety**: No conflicting block finalizations  
-**Liveness**: Progress under honest majority (>60%)  
-**Byzantine Resilience**: Tolerates up to 19% malicious nodes  
-**Crash Fault Tolerance**: Survives 20% node failures  
+The following critical properties have been formally verified:
+
+- **Safety**: No conflicting block finalizations
+- **Liveness**: Progress under honest majority (>60%)
+- **Byzantine Resilience**: Tolerates up to 19% malicious nodes
+- **Crash Fault Tolerance**: Survives 20% node failures
+
+All properties hold under the specified network conditions and fault models.  
 
 ## Quick Start
 
 ### Prerequisites
 
+The following software is required to run the verification suite:
+
 - **Java 17+** (for TLA+ tools)
 - **Python 3.8+** (for statistical analysis)
+
+Ensure both are properly installed and configured before proceeding.
 
 ### Installation
 
 ```bash
-# Clone repository
-git clone https://github.com/preeeetham/alpenglow-formal-verification.git
+# Clone the repository
+git clone https://github.com/gettosan/alpenglow-formal-verification.git
 cd alpenglow-formal-verification
 
 # Note: TLA+ tools (tla2tools.jar) are included in the repository
@@ -84,6 +100,8 @@ cd alpenglow-formal-verification
 ```
 
 #### Java Setup (Critical)
+
+Java 17+ is required for running TLA+ model checking tools.
 
 **Automated Setup (Recommended)**:
 ```bash
@@ -122,6 +140,8 @@ If you encounter "Unable to locate a Java Runtime" errors:
 3. For bash users, replace `~/.zshrc` with `~/.bash_profile` in commands above
 
 #### Python Setup (Required for Experiments)
+
+Python 3.8+ is required for running statistical analysis and experiment scripts.
 
 ```bash
 # Create virtual environment (always recommended)
@@ -206,23 +226,39 @@ alpenglow-formal-verification/
 ## Technical Highlights
 
 ### Verification Tools
+
+The following tools are used for formal verification:
+
 - **TLC Model Checker** v2.19 (exhaustive verification)
 - **TLAPS** (Temporal Logic of Actions Proof System)
 - **Monte Carlo simulation** (statistical validation)
 
+All tools are integrated into the verification workflow.
+
 ### Achievements
+
+The verification effort has achieved the following milestones:
+
 - **Zero protocol vulnerabilities** discovered
 - **100% test suite success** (19/19 tests passing)
 - **Complete TLA+ specification parsing** (12/12 files)
 - **Production-scale validation** (up to 1000 nodes)
 - **Maximum parallelization** (12-core CPU utilization)
 
+These achievements demonstrate the robustness and scalability of the Alpenglow consensus protocol.
+
 ## Documentation
+
+Comprehensive documentation is available for this project:
 
 - **[Verification Results](VERIFICATION_RESULTS.md)** - Comprehensive results and metrics
 - **[Technical Report](docs/technical-report.md)** - Detailed methodology and findings
 
+Both documents provide in-depth analysis of the verification process and results.
+
 ## Development Status
+
+The project has reached production-ready status with the following completion metrics:
 
 - Complete TLA+ specifications for all components (12/12 files parsing)
 - Exhaustive verification (small networks, 3/3 tests passing)
@@ -232,12 +268,19 @@ alpenglow-formal-verification/
 - 100% test suite success rate achieved (19/19 tests)
 - Production-ready verification suite
 
+All components are fully functional and ready for use.
+
 ## License
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
 ## References
 
+Additional resources and documentation:
+
 - [Alpenglow Whitepaper](https://github.com/solana-labs/alpenglow)
 - [TLA+ Homepage](https://lamport.azurewebsites.net/tla/tla.html)
 - [Solana Documentation](https://docs.solana.com/)
+
+These resources provide additional context and technical details about the Alpenglow protocol and formal verification methods.
+

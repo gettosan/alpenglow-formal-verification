@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Alpenglow Consensus Counterexample Analysis
-Analyze and visualize counterexamples from model checking failures
+
+Analyze and visualize counterexamples from model checking failures.
+Provides detailed debugging information for property violations.
 """
 
 import subprocess
@@ -12,6 +14,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 class CounterexampleAnalyzer:
+    """Analyzer for counterexamples and property violations"""
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent.parent
         self.tla_tools = self.base_dir / "tla2tools.jar"
@@ -302,3 +305,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

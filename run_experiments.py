@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Alpenglow Formal Verification - Complete Experiment Runner
-Runs all verification experiments, benchmarks, and statistical analysis
+
+Runs all verification experiments, benchmarks, and statistical analysis.
+Provides comprehensive testing and validation of the Alpenglow consensus protocol.
 """
 
 import subprocess
@@ -15,6 +17,7 @@ import multiprocessing
 import psutil
 
 class ExperimentRunner:
+    """Main experiment runner for Alpenglow verification suite"""
     def __init__(self):
         self.base_dir = Path(__file__).parent
         self.results = {}
@@ -555,3 +558,4 @@ def main():
 if __name__ == "__main__":
     success = main()
     sys.exit(0 if success else 1)
+
